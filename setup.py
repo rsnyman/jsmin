@@ -1,13 +1,10 @@
 from setuptools import setup
 
-import os, sys, re
+import os
+import re
 
-os.environ['COPYFILE_DISABLE'] = 'true'  # this disables including resource forks in tar files on os x
-
-
-extra = {}
-if sys.version_info >= (3,0):
-    extra['use_2to3'] = True
+# this disables including resource forks in tar files on os x
+os.environ['COPYFILE_DISABLE'] = 'true'
 
 
 def long_description():
@@ -15,18 +12,19 @@ def long_description():
 
 
 setup(
-    name="jsmin",
-    version=re.search(r'__version__ = ["\']([^"\']+)', open('jsmin/__init__.py').read()).group(1),
+    name='jsmin',
+    version=re.search(r'__version__ = ["\']([^"\']+)',
+                      open('jsmin/__init__.py').read()).group(1),
     packages=['jsmin'],
     description='JavaScript minifier.',
     long_description=long_description(),
     author='Dave St.Germain',
     author_email='dave@st.germa.in',
-    maintainer='Tikitu de Jager',
-    maintainer_email='tikitu+jsmin@logophile.org',
+    maintainer='Raoul Snyman',
+    maintainer_email='raoul@snyman.info',
     test_suite='jsmin.test',
     license='MIT License',
-    url='https://github.com/tikitu/jsmin/',
+    url='https://github.com/rsnyman/jsmin/',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -43,5 +41,4 @@ setup(
         'Topic :: Software Development :: Pre-processors',
         'Topic :: Text Processing :: Filters',
     ],
-    **extra
 )
